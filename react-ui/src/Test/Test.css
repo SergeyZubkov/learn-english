@@ -1,0 +1,24 @@
+.test {
+  background: #EDEFF1;
+  text-align: center;
+  min-height: 300px;
+  border-radius: 5px;
+  padding: 20px 0;
+}
+
+.test button {
+  text-align: center;
+}
+
+.test-intro {
+  font-size: 28px;
+  padding-top: 40px;
+}
+
+.test-intro .btn{
+  margin-top: 80px;
+}
+
+.test__result {
+  font-size: 28px;
+}

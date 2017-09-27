@@ -17,14 +17,33 @@ import {connect} from 'react-redux';
 import cuid from 'cuid';
 
 class Add extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      en: '',
+      ru: ''
+    }
+  }
 
   componentDidMount() {
+    console.log(this.props)
     this.updatableEntry = this.props.location.updatableEntry;
 
     if (this.updatableEntry) {
-      this.inputEN.value = this.updatableEntry.en;
-      this.inputRU.value = this.updatableEntry.ru
+      this.setState({
+        en: this.updatableEntry.en,
+        ru: this.updatableEntry.ru
+      });
     }
+  }
+
+  changeEN = (e) => {
+    this.setState({en: e.target.value});
+  }
+
+  changeRU = (e) => {
+    this.setState({ru: e.target.value});
   }
 
   submit = (e) => {
@@ -33,19 +52,22 @@ class Add extends Component {
     if (this.updatableEntry) {
       this.props.onUpdateEntry(
         this.updatableEntry.id, {
-          en: this.inputEN.value,
-          ru: this.inputRU.value
+          en: this.state.en,
+          ru: this.state.ru
         }
       )
     } else {
       this.props.onAddEntry({
         id: cuid(),
-        en: this.inputEN.value,
-        ru: this.inputRU.value
+        en: this.state.en,
+        ru: this.state.ru
       });
     }
 
-    this.inputRU.value = this.inputEN.value = '';
+    this.setState({
+      en: '',
+      ru: ''
+    })
 
     if (this.updatableEntry) {
       this.props.history.push({
@@ -54,40 +76,46 @@ class Add extends Component {
     }
   }
 
+  shouldDisableSubmitBtn = () => {
+    return !(this.state.en&&this.state.ru);
+  }
+
   render() {
     return (
       <Grid className='add'>
         <Row>
           <Col
-            md={12}
+            md={6}
+            mdOffset={3}
           >
             <form
               onSubmit={this.submit}
             >
               <FormGroup
-
               >
                 <ControlLabel>
                   по-английски
                 </ControlLabel>
                 <FormControl
                   componentClass='textarea'
-                  inputRef={(input) => this.inputEN = input}
+                  value={this.state.en}
+                  onChange={this.changeEN}
                 />
               </FormGroup>
               <FormGroup
-
               >
                 <ControlLabel>
                   по-русски
                 </ControlLabel>
                 <FormControl
                   componentClass='textarea'
-                  inputRef={(input) => this.inputRU = input}
+                  value={this.state.ru}
+                  onChange={this.changeRU}
                 />
               </FormGroup>
               <Button
                 type='submit'
+                disabled={this.shouldDisableSubmitBtn()}
               >
                 Добавить
               </Button>

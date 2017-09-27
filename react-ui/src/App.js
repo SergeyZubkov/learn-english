@@ -43,9 +43,13 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
           </div>
-          <Route exact path='/'component={Test}/>
-          <Route path='/dictionary'component={Dictionary}/>
-          <Route path='/add'component={Add}/>
+          <div
+            className='app-content'
+          >
+            <Route exact path='/'component={Test}/>
+            <Route path='/dictionary'component={Dictionary}/>
+            <Route path='/add'component={Add}/>
+          </div>
         </div>
       </Router>
     );

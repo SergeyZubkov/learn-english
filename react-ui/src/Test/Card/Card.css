@@ -1,0 +1,47 @@
+.card {
+  background: #EDEFF1;
+  width: 500px;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 25px;
+  margin-bottom: 20px;
+  background: #fff;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card.correct {
+  box-shadow: 0 0 2px #54fda7;
+}
+
+.card.incorrect {
+  box-shadow: 0 0 2px #fd5454;
+}
+
+.card-front {
+  margin: 20px 0;
+}
+
+.card-back-answer div {
+  color: #ddd;
+}
+
+.card form {
+  margin: 100px auto 0;
+}
+
+.card form {
+  width: 100%;
+}
+
+.card form textarea {
+  font-size: 25px;
+}
+
+.card form button {
+  margin-top: 40px;
+
+}

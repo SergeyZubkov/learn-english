@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {
+  Grid,
+  Row,
+  Col,
   Table
 } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {removeEntry} from '../actions';
-import FontAwesome from 'react-fontawesome';
 import './Dictionary.css';
+import RowItem from './RowItem';
 
 class Dictionary extends Component {
 
-  editEntry(entry) {
+  editEntry = (entry) => {
     this.props.history.push({
       pathname: '/add',
       updatableEntry: entry
@@ -18,47 +21,41 @@ class Dictionary extends Component {
 
   render() {
     return (
-      <div className='dictionary'>
-        <Table
-          hover
-        >
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>
-                По-английски
-              </th>
-              <th>
-                По-русски
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.entries.map((entry, i) => (
-              <tr
-                key={i}
-              >
-                <td>{i}</td>
-                <td>{entry.en}</td>
-                <td>{entry.ru}</td>
-                <td
-                  className='item-actions'
-                >
-                  <FontAwesome
-                    name='edit'
-                    onClick={() => this.editEntry(entry)}
+      <Grid className='dictionary'>
+        <Row>
+          <Col
+            md={12}
+          >
+            <Table
+              hover
+            >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>
+                    По-английски
+                  </th>
+                  <th>
+                    По-русски
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.entries.map((entry, i) => (
+                  <RowItem
+                    key={i}
+                    index={i}
+                    entry={entry}
+                    onEditEntry={this.editEntry}
+                    onRemoveEntry={this.props.onRemoveEntry}
                   />
-                  <FontAwesome
-                    name='trash'
-                    onClick={() => this.props.onRemoveEntry(entry.id)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }

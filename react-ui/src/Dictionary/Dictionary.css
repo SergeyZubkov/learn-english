@@ -1,3 +1,14 @@
+.dictionary {
+  background: #EDEFF1;
+  padding-top: 20px;
+  border-radius: 5px;
+}
+
+.dictionary .table{
+  background: #fff;
+  border-radius: 5px;
+}
+
 .dictionary .item-actions {
   display: flex;
   justify-content: space-around;

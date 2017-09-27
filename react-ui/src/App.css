@@ -5,3 +5,14 @@
 .app-header {
   background: #101010;
 }
+
+.app-content {
+  height: 100%;
+  background: #1ABC9C;
+  padding-top: 200px;
+}
+
+
+.app .navbar {
+  margin-bottom: 0;
+}
