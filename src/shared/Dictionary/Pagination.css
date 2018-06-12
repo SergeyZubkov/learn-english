@@ -1,0 +1,8 @@
+.pagination>li>a,
+.pagination>li>span {
+	border: 0 !important;
+}
+
+.pagination>li.disabled>span {
+	opacity: .6;
+}

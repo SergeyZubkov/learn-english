@@ -1,0 +1,36 @@
+.pagination>li>a,
+.pagination>li>span {
+	border: 0 !important;
+}
+
+.pagination>li.disabled>span {
+	opacity: .6;
+}
+
+.my-dropdown .dropdown-menu {
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+	left: 50%;
+	top: auto;
+	bottom: 100%;
+	min-width: 80px;
+	text-align: center;
+}
+
+.pagination-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.pagination-header > div {
+	margin: 0 10px;
+}.app {
+	color: blue;
+	font-size: 20px;
+}
+
+/*# sourceMappingURL=main.css.map*/

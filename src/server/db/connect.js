@@ -1,0 +1,26 @@
+import mongoose from 'mongoose';
+import db from './constants';
+import loadModels from './models';
+import Word from './models/word';
+import moment from 'moment';
+
+function connect() {
+	(() => {
+		mongoose.connect(db, (err) => {
+			if (err) {
+				console.log(`Error connection to ${db}`);
+				console.log(`Reason ${err}`);
+			} else {
+
+				console.log(`Succeeded in connecting to ${db}`)
+			}
+		})
+	})();
+
+	mongoose.connection.on('error', console.log);
+	mongoose.connection.on('disconnected', connect);
+	loadModels();
+	
+}
+
+export default connect;
